@@ -3,10 +3,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float speed = 15.0f;
-    private float turnSpeed = 50.0f;
     private float horizontalInput;
-    private float forwardInput;
-
+    private float verticalInput;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,11 +18,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //Player inputs
         horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("Vertical");
 
         //Player movement
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        //Player turning
-        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
     }
 }
